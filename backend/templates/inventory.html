@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<table class="container-fluid">
+    <thead>
+        <tr class="row text-center">
+            <th class="col text-center">ID</th>
+            <th class="col text-center">Name</th>
+            <th class="col text-center">Price</th>
+            <th class="col text-center">Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr class="row">
+            <td class="col text-center">{{ item.id }}</td>
+            <td class="col text-center">{{ item.name }}</td>
+            <td class="col text-center">{{ item.price }}</td>
+            <td class="col text-center">{{ item.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

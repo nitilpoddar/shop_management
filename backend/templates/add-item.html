@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+
+
+{% block content %}
+
+
+<form action="/add-item" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+    <label for="price">price</label>
+    <input type="number" name="price">
+    <label for="stock">Stock</label>
+    <input type="number" name="stock">
+    <button type="submit">Submit</button>
+</form>
+
+
+<table class="container-fluid">
+    <thead>
+        <tr class="row text-center">
+            <th class="col text-center">ID</th>
+            <th class="col text-center">Name</th>
+            <th class="col text-center">Price</th>
+            <th class="col text-center">Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr class="row">
+            <td class="col text-center">{{ item.id }}</td>
+            <td class="col text-center">{{ item.name }}</td>
+            <td class="col text-center">{{ item.price }}</td>
+            <td class="col text-center">{{ item.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
