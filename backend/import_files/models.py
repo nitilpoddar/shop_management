@@ -27,7 +27,7 @@ class Item(db.Model):
         return '<Item %r>' % self.name
 
 class Bill(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    bill_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     timestamp = db.Column(db.DateTime, unique=False, nullable=False)
 
