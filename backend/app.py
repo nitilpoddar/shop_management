@@ -21,13 +21,14 @@ def add_item():
         return render_template('add-item.html')
     else:
         name = request.form.get("name")
-        price = request.form.get("price")
+        w_price = request.form.get("w_price")
+        r_price = request.form.get("r_price")
         stock = request.form.get("stock")
         description = request.form.get("description")
-        item = Item(name=name, price=price, stock=stock, description=description)
+        item = Item(name=name, w_price=w_price, r_price=r_price, stock=stock, description=description)
         db.session.add(item)
         db.session.commit()
-        return f"name is {name}, price is {price}, stock is {stock}, description is {description}"
+        return render_template('add-item.html', message="Item added successfully")
         
 
 
