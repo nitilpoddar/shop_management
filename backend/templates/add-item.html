@@ -4,13 +4,20 @@
 
 {% block content %}
 
+{% if message %}
+<h1>{{ message }}</h1>
+{% endif %}
+
 
 <form action="/addItem" method="post">
     <label for="name">Name</label>
     <input type="text" name="name">
 
-    <label for="price">price</label>
-    <input type="number" name="price">
+    <label for="w_price">Wholesale price</label>
+    <input type="number" name="w_price">
+
+    <label for="r_price">Retail Price</label>
+    <input type="number" name="r_price">
 
     <label for="stock">Stock</label>
     <input type="number" name="stock">
