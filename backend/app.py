@@ -18,7 +18,10 @@ def index():
 @app.route('/addItem', methods=['GET','POST'])
 def add_item():
     if request.method == 'GET':
-        return render_template('add-item.html')
+        data = db.session.query(Item).all()
+        for item in data:
+            print (item.name, item.price, item.stock, item.description)
+        return render_template('add-item.html', items=data)
     else:
         name = request.form.get("name")
         price = request.form.get("price")
@@ -27,7 +30,14 @@ def add_item():
         item = Item(name=name, price=price, stock=stock, description=description)
         db.session.add(item)
         db.session.commit()
-        return f"name is {name}, price is {price}, stock is {stock}, description is {description}"
+        return redirect(url_for('add_item'))
+    
+@app.route('/inventory', methods=['GET', 'POST'])
+def inventory():
+    data = db.session.query(Item).all()
+    # for item in data:
+    #     print (item.name, item.price, item.stock, item.description)
+    return render_template('inventory.html', items=data)
         
 
 
